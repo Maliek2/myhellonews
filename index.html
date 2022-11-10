@@ -1,46 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-
-    <!-- Don't use this in production: -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/babel">
-    
-      function MyApp() {
-        return <h1>Hello, world!</h1>;
-      }
-
-      const container = document.getElementById('root');
-      const root = ReactDOM.createRoot(container);
-      root.render(<MyApp />);
-
-    </script>
-    <!--
-      Note: this page is a great way to try React but it's not suitable for production.
-      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
-
-      Read this section for a production-ready setup with JSX:
-      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
-
-      In a larger project, you can use an integrated toolchain that includes JSX instead:
-      https://reactjs.org/docs/create-a-new-react-app.html
-
-      You can also use React without JSX, in which case you can remove Babel:
-      https://reactjs.org/docs/react-without-jsx.html
-    -->
-<!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-
-  <!-- Load our React component. -->
-  <script src="like_button.js"></script>
-  </body>
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<script>
+(function() {
+var v = location.search.substr(1);
+if (!(/^\d+(-canary)?$/.test(v))) return;
+var u = 'https://3p.ampproject.net/'+encodeURIComponent(v)+'/vendor/_ping_.js'; // Replace _ping_ with the vendor you wish to use
+document.write('<script'+' src="'+encodeURI(u)+'"><'+'/script>'); // lgtm [js/eval-like-call]
+})();
+</script>
+</head>
+<body style="margin:0">
+<div id="c" style="position:absolute;top:0;left:0;bottom:0;right:0;">
+  <script>
+    draw3p(undefined,
+      // List of expected amp-ad types.
+      ['allowed-ad-type1', 'allowed-ad-type2'],
+      // List of hostnames that are allowed to embed this change.
+      // Please also use ALLOW-FROM X-Frame-Options to get security in
+      // browsers that do not support location.ancestorOrigins.
+      ['your-domain.com']);
+  </script>
+</div>
+<script>if (window.docEndCallback) window.docEndCallback()</script>
+</body>
 </html>
