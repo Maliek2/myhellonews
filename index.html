@@ -9,15 +9,6 @@
 
     <title>Vue-Tiny-Lazyload-Img</title>
 
-    <% for (var chunk in htmlWebpackPlugin.files.css) { %>
-      <link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>"  as="style">
-    <% } %>
-
-    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-      <!-- <% if(chunk.indexOf('runtime') == -1){ %> -->
-        <link rel="preload" href="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script">
-      <!-- <% } %> -->
-    <% } %>
 
     <meta name="language" content="en-EN"/>
     <meta name="author" content="Irfan Maulana"/>
@@ -54,7 +45,7 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-25065548-2"></script>
-    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-25065548-2');</script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-');</script>
 
   </head>
   <body>
