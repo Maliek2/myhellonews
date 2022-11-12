@@ -1,78 +1,69 @@
-<!doctype html>
-<html ⚡ lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-  <link rel="canonical" href="/static/samples/standalone/amp-website.html">
-  <title>News Website </title>
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-  <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
-  <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
-  <script async custom-element="amp-lightbox-gallery" src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js"></script>
-  <style amp-custom>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    }
-    body > * {
-      margin: 0.5rem 0 0.5rem 0.5rem;
-    }
-    amp-carousel {
-      margin: 0;
-    }
-    input[type=number] {
-      width: 2rem;
-    }
-    .red {
-      color: red;
-    }
-    </style>
+<title>JavaScript Example</title>
+<meta charset="UTF-8">
 </head>
 <body>
+<h1>Liam Apps</h1>
+<script>
 
-  <h2>Maliek News</h2>
-
-  <p>Here is a responsive image carousel implemented in AMP. Tap
-  on one of the images to enter the lightbox mode.</p>
-  <amp-carousel type="slides"
-                width="400"
-                height="300"
-                layout="responsive"
-                lightbox>
-    <amp-img src="https://unsplash.it/400/300?image=10"
-             width="400"
-             height="300"
-             layout="responsive"
-             alt="a sample image">
-    </amp-img>
-    <amp-img src="https://unsplash.it/400/300?image=11"
-             width="400"
-             height="300"
-             layout="responsive"
-             alt="a sample image">
-    </amp-img>
-    <amp-img src="https://unsplash.it/400/300?image=12"
-             width="400"
-             height="300"
-             layout="responsive"
-             alt="a sample image">
-    </amp-img>
-    <amp-img src="https://unsplash.it/400/300?image=13"
-             width="400"
-             height="300"
-             layout="responsive"
-             alt="a sample image">
-    </amp-img>
-  </amp-carousel>
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
+    }
+  }
 
 
-  <h2>Interactive</h2>
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
 
-  <p>AMP provides a rich set of built-in actions for creating
-  interactive websites.</p>
 
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{5357101781068135}',
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+      xfbml      : true,                     // Parse social plugins on this webpage.
+      version    : '{api-version}'           // Use this Graph API version for this call.
+    });
+
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+      statusChangeCallback(response);        // Returns the login status.
+    });
+  };
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+
+</script>
+
+
+<!-- The JS SDK Login Button -->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+
+</div>
+
+<!-- Load the JS SDK asynchronously -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 </body>
 </html>
