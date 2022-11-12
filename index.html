@@ -193,11 +193,12 @@
 <h1 id="top">Mobile News</h1>
 
 </div>
+
    <amp-consent id="myConsent" layout="nodisplay">
         <script type="application/json">{
           "consentInstanceId": "advanced-consent",
           "consentRequired": "remote",
-          "checkConsentHref": "/documentation/examples/api/get-consent",
+          "checkConsentHref": "/api/get-consent",
           "promptUI": "consentDialog",
           "postPromptUI": "post-consent-ui"
         }</script>
@@ -205,11 +206,11 @@
           <div class="lightbox-content">
             <div class="dismiss-button" role="button" tabindex="0" on="tap:myConsent.dismiss">X</div>
             <div class="message">
-              <h2>Headline</h2>
+              <h2>Mobile Consent</h2>
               <p>This is an important message requiring you to make a choice.</p>
             </div>
             <div id="choice">
-              <button on="tap:choice2.show,choice1.hide">Choice 2</button>
+              <button on="tap:choice2.show,choice1.hide">Accept</button>
             </div>
             <div id="choice1" hidden class="message">
               <p>This is some more information about this choice. Here's a list of items related to this choice.</p>
@@ -340,34 +341,6 @@
     We define a basic consent flow using the `promptUISrc` to load our custom consent iframe.
   -->
 
-  <amp-consent id="myUserConsent" layout="nodisplay">
-    <script type="application/json">
-    {
-      "consentInstanceId": "myConsent",
-      "consentRequired": true,
-      "promptUISrc": "/static/files/diy-consent.html",
-      "postPromptUI": "post-consent-ui"
-    }
-     </script>
-
-    <div id="post-consent-ui">
-    <button on="tap:myUserConsent.prompt()">Tools</button>
-    </div>
-  </amp-consent>
-
-  <div>
-  <amp-iframe title="Google AMP Cache tool" height="105" layout="fixed-height" sandbox="allow-scripts allow-popups" src="/index.html?url=https://www.adball.online/about/websites/">
-  <div placeholder></div>
-  </amp-iframe>
-  </div>
-
-
-<div align="center">
-<amp-iframe title="Cache tool" height="105" layout="fixed-height" sandbox="allow-scripts allow-popups" src="/index.html?url=https://www.adball.online/about/">
-
-<div placeholder></div>
-</amp-iframe>
-</div>
   
 
 
