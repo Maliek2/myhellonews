@@ -1,328 +1,831 @@
 <!doctype html>
-<html ⚡ lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<meta name="amp-google-client-id-api" content="googleanalytics">
-<script async src="https://cdn.ampproject.org/v0.js"></script>
-      
-      <title>News Article</title>
-       
-      <!-- ## Setup -->
-      
-      <script async custom-element="amp-sticky-ad" src="https://cdn.ampproject.org/v0/amp-sticky-ad-1.0.js"></script>
-      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-      <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-   
-      <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
-      <!-- Import `amp-iframe` to embed an interactive chart -->
-
-      <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-
-      <!-- Import `amp-carousel` to implement an image gallery -->
-      <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
-
-      <!-- Import `amp-user-notification` to display a cookie notification -->
-      <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
-
-      <!-- Import `amp-list` to get a fresh a list of related articles -->
-      <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
-
-      <!-- Import `amp-mustache` as a format template for `amp-list` -->
-      <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-      <!-- Import `amp-analytics` for tracking usage -->
-
-      <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-      <!-- Import `amp-ad` to display ads -->
-
-      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-
-      <script async custom-element="amp-fx-flying-carpet" src="https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js"></script>
-      <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script>
-
-      <link rel="canonical" href="https://myhellonews.vercel.app">
-     
-      <style amp-custom>
-    :root {
-      --space-2: 1rem;   /* 16px */
-      --space-3: 1.5rem; /* 24px */
+  <meta charset="utf-8">
+  <title>Viewer</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+  <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+  <script src="https://cdn.ampproject.org/v0/examples/amp-viewer-host.js"></script>
+  <style>
+    html, body {
+      overflow: hidden;
     }
-    .lightbox {
-      height: 100vh;
-      width: 100vw;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 5% 0;
+
+    body {
+      font-family: 'Questrial', Arial;
     }
-    .lightbox-content {
-      margin: 0 auto;
-      padding: var(--space-2);
-      background: #fff;
-      border-radius: 5px;
-      max-width: 700px;
-      width: 95%;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .message {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .message > h2,
-    .message > * {
-      margin: var(--space-2) 0;
-      min-width: 200px;
-      text-align: center;
-    }
-    .dismiss-button {
+
+    body, viewer {
       position: absolute;
-      right: var(--space-3);
-      top: var(--space-2);
-      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
     }
-    #post-consent-ui {
+
+    viewer {
+      background: #eee;
+    }
+
+    header {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: #4285F4;
+      opacity: 0.7;
+      color: #fff;
       display: flex;
-      justify-content: center;
+      flex-direction: row;
+      justify-content: flex-start;
       align-items: center;
-      padding: var(--space-3);
+      padding: 0 8px;
     }
- 
-     :root {
-      --color-secondary: #00DCC0;
-    }
-    .amp-flying-carpet-text-border {
-      background-color: black;
-      color: white;
-      text-align: center;
-    }
-    .viewport-100 {
-      height: 100vh;
-      background-color: var(--color-secondary);
-    }
-    h1 {
-      margin: 1rem;
-    }
-     body {
-      background-color: red;
-    }
- 
-    :root {
-      --space-3: 1.5rem; /* 24px */
-    }
-    #post-consent-ui {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: var(--space-3);
-    }
- 
-    .amp-sticky-ad-close-button {
-      min-width: 0;
-    }
-     
-        :root {
-          
-       --color-primary: #005AF0;
-          --color-text-light: #fff;
-          --color-text-dark: #000;
-          --color-bg-light: #FAFAFC;
 
-          --space-1: .5rem;  /* 8px */
-          --space-2: 1rem;   /* 16px */
+    @media screen and (min-width: 500px) {
+      header {
+        height: 64px;
+      }
+    }
 
-          --box-shadow-1: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-          }
-          .figure {
-            margin: var(--space-2) 0;
-            padding: 0;
-          }
-          .figure>figcaption{
-            padding: var(--space-1) var(--space-2);
-          }
-          .amp-ad-container {
-            display: flex;
-            margin: 0 auto;
-          }
-          .carousel .slide > amp-img > img {
-            object-fit: contain;
-          }
-          .heading {
-            padding-bottom: var(--space-1);
-          }
-          .heading h1 {
-            font-size: 3rem;
-            line-height: 3.5rem;
-            margin-bottom: var(--space-2);
-          }
-          .heading > #summary {
-            font-weight: 500;
-          }
-          .heading > small {
-            color: var(--color-primary);
-          }
-          .related {
-            background-color: var(--color-bg-light);
-            margin: var(--space-2);
-            display: flex;
-            color: var(--color-text-dark);
-            padding: 0;
-            box-shadow: var(--box-shadow-1);
-            text-decoration: none;
-          }
-          .related > span {
-            font-weight: 400;
-            margin: var(--space-1);
-          }
-          .related:hover {
-            background-color: var(--color-bg-light);
-          }
-          .cookie-disclaimer {
-            padding: var(--space-1);
-            background: var(--color-bg-light);
-            text-align: center;
-            color: var(--color-text-dark);
-            border-top: 1px solid var(--color-text-dark);
-          }
-</style>
+    header h1 {
+      font-size: 22px;
+      flex-grow: 1;
+    }
 
+    header .show-container-anchor {
+      flex-grow: 0;
+      flex-shrink: 0;
+      padding: 8px;
+    }
+
+    header #visibilityToggle {
+      flex-grow: 0;
+      flex-shrink: 0;
+      padding: 8px;
+    }
+
+    .wait {
+      position: absolute;
+      z-index: 3;
+      top: 100px;
+      left: 20px;
+      font-size: 12px;
+    }
+
+    container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-x: hidden;
+      visibility: hidden;
+      -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+
+    viewer[data-show-container="1"] #container1 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+
+    viewer[data-show-container="1"] #show-container1-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="2"] #container2 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+
+    viewer[data-show-container="2"] #show-container2-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="3"] #container3 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+
+    viewer[data-show-container="3"] #show-container3-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="4"] #container4 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+
+    viewer[data-show-container="4"] #show-container4-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="5"] #container5 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+
+    viewer[data-show-container="5"] #show-container5-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="6"] #container6 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+
+    viewer[data-show-container="6"] #show-container6-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="7"] #container7 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+
+    viewer[data-show-container="7"] #show-container7-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="8"] #container8 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+    viewer[data-show-container="8"] #show-container8-anchor {
+      text-decoration: underline;
+    }
+
+    viewer[data-show-container="9"] #container9 {
+      visibility: visible;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+    viewer[data-show-container="9"] #show-container9-anchor {
+      text-decoration: underline;
+    }
+
+    viewer.natural container {
+      overflow-y: hidden;
+    }
+
+    container iframe {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    viewer.natural container iframe {
+      height: 100%;
+    }
+  </style>
+
+  <script>
+    var allViewers = [];
+    var currentContainerId = null;
+
+    function Viewer(containerId, id, url, visible, opt_caps) {
+      this.id = id;
+      this.url = url;
+      this.alreadyLoaded_ = false;
+      this.stackIndex_ = 0;
+      this.visibilityState_ = visible ? 'visible' : 'hidden';
+      this.csi_ = 1;
+      this.startResolve_ = null;
+      this.startPromise_ = null;
+      this.caps_ = opt_caps || 'a2a,focus-rect,foo,keyboard,swipe,viewerRenderTemplate,iframeScroll';
+      this.receivedMessages = []
+
+      this.viewer = document.querySelector('viewer');
+      this.header = document.querySelector('header');
+      this.container = document.getElementById(containerId);
+      this.iframe = document.createElement('iframe');
+      this.iframe.setAttribute('id', 'AMP_DOC_' + this.id);
+      this.iframe.setAttribute('sandbox',
+          'allow-popups allow-scripts allow-forms allow-pointer-lock' +
+          ' allow-popups-to-escape-sandbox allow-same-origin');
+      this.iframe.setAttribute('scrolling', 'yes');
+      this.iframe.setAttribute('height', '800');
+      this.iframe.setAttribute('width', '1200');
+      this.viewer.classList.add('natural');
+
+      this.visibilityToggle_ = document.getElementById('visibilityToggle');
+      this.visibilityToggle_.addEventListener('click', function() {
+        var activeId = this.viewer.getAttribute('data-show-container');
+        if (activeId == this.id) {
+          this.toggleVisibility(this.visibilityState_ != 'visible', true);
+        }
+      }.bind(this));
+
+      window.addEventListener('resize', this.onResize_.bind(this));
+      window.addEventListener('popstate', this.onPopState_.bind(this));
+    };
+
+
+    Viewer.prototype.start = function() {
+      allViewers.push(this);
+
+      var params = {
+        history: 1,
+        width: this.container./*OK*/offsetWidth,
+        height: this.container./*OK*/offsetHeight,
+        paddingTop: this.header./*OK*/offsetHeight,
+        visibilityState: this.visibilityState_,
+        origin: parseUrlDeprecated(window.location.href).origin,
+        csi: this.csi_,
+        cap: this.caps_,
+      };
+      log('Params:' + JSON.stringify(params));
+
+      var inputUrl = this.url + '#' + paramsStr(params);
+      if (window.location.hash && window.location.hash.length > 1) {
+        inputUrl += '&' + window.location.hash.substring(1);
+      }
+      var parsedUrl = parseUrlDeprecated(inputUrl);
+      var url = parsedUrl.href;
+      this.frameOrigin_ = parsedUrl.origin;
+      log('AMP URL = ', url);
+      this.iframe.style.display = 'none';
+      this.container.appendChild(this.iframe);
+
+      this.ampViewerHost_ = new AmpViewerHost(window, this.iframe,
+        this.frameOrigin_, this.processRequest_.bind(this),
+        /* logs id */ this.id);
+
+      setTimeout(function() {
+        this.iframe.style.visibility = 'hidden';
+        this.iframe.style.display = '';
+        this.iframe.setAttribute('src', url);
+      }.bind(this));
+
+      return this.startPromise_ = new Promise(resolve => {
+        this.startResolve_ = resolve;
+      });
+    };
+
+    Viewer.prototype.toggleVisibility = function(visible, updateToggle) {
+      log('Viewer ' + this.id + ' visibility -> ', visible);
+      this.startPromise_.then(() => {
+        this.visibilityState_ = visible ? 'visible' : 'hidden';
+        this.ampViewerHost_.sendRequest('visibilitychange', {
+          state: this.visibilityState_,
+        }, true);
+        if (updateToggle) {
+          this.updateVisibilityToggle_();
+        }
+      });
+    };
+
+    Viewer.prototype.loaded_ = function() {
+      if (this.alreadyLoaded_) {
+        return;
+      }
+      log('AMP Loaded');
+      this.alreadyLoaded_ = true;
+      var waiter = this.container.querySelector('.wait');
+      if (waiter) {
+        waiter.parentElement.removeChild(waiter);
+      }
+      this.iframe.dataset['loaded'] = '';
+      this.iframe.style.display = '';
+      this.iframe.style.visibility = '';
+      this.iframe.contentWindow.onbeforeunload = (function() {
+        this.container.style.paddingTop = '120px';
+        this.container.textContent =
+            'Unload of the AMP iframe is not allowed!';
+      }).bind(this);
+      this.startResolve_();
+    };
+
+
+    Viewer.prototype.documentReady_ = function() {
+      log('AMP document ready');
+      this.loaded_();
+      return Promise.resolve();
+    };
+
+
+    Viewer.prototype.onScroll_ = function() {
+      log('Viewer.prototype.onScroll_');
+      this.ampViewerHost_.sendRequest('viewport', {
+        scrollTop: this.container./*OK*/scrollTop
+      }, false);
+    };
+
+
+    Viewer.prototype.onResize_ = function() {
+      log('Resized to ', this.container./*OK*/offsetWidth,
+          this.container./*OK*/offsetHeight,
+          this.header./*OK*/offsetHeight,
+          this.container./*OK*/scrollTop);
+      this.ampViewerHost_.sendRequest('viewport', {
+        scrollTop: this.container./*OK*/scrollTop,
+        width: this.container./*OK*/offsetWidth,
+        height: this.container./*OK*/offsetHeight,
+        paddingTop: this.header./*OK*/offsetHeight
+      }, false);
+    };
+
+
+    Viewer.prototype.requestFullOverlay_ = function() {
+      log('requestFullOverlay');
+      this.header.style.opacity = 0;
+      return Promise.resolve();
+    };
+
+
+    Viewer.prototype.cancelFullOverlay_ = function() {
+      log('cancelFullOverlay');
+      this.header.style.opacity = 1;
+      return Promise.resolve();
+    };
+
+
+    Viewer.prototype.pushHistory_ = function(stackIndex) {
+      log('push history to ', stackIndex);
+      // Super trivial. Only one step allowed.
+      if (stackIndex != this.stackIndex_ + 1) {
+        throw new Error('Only one step push allowed');
+      }
+      this.stackIndex_ = stackIndex;
+      window.history.pushState({}, '');
+      return Promise.resolve();
+    };
+
+
+    Viewer.prototype.popHistory_ = function(stackIndex) {
+      log('pop history at ', stackIndex);
+      // Super trivial. Only one step allowed.
+      if (stackIndex != this.stackIndex_) {
+        throw new Error('Only one step pop allowed');
+      }
+      this.stackIndex_ = stackIndex;
+      window.history.go(-1);
+      return Promise.resolve();
+    };
+
+
+    Viewer.prototype.onPopState_ = function() {
+      // Even more trivial. Always assumes that only one step was popped in
+      // history.
+      this.stackIndex_--;
+      this.ampViewerHost_.sendRequest('historyPopped', {
+        newStackIndex: this.stackIndex_
+      }, false);
+      log('history popped to ', this.stackIndex_);
+    };
+
+
+    Viewer.prototype.updateVisibilityToggle_ = function() {
+      this.visibilityToggle_.textContent = this.visibilityState_ == 'visible' ?
+          'Visible' : 'Prerendering';
+    };
+
+
+    Viewer.prototype.broadcast_ = function(message) {
+      log('broadcast: ', message);
+      var self = this;
+      allViewers.forEach(function(viewer) {
+        if (viewer != self) {
+          viewer.messaging_.sendRequest('broadcast', message, false);
+        }
+      });
+    };
+
+
+    Viewer.prototype.scrollAmpDoc = function(scrollTop) {
+      log('viewer scroll amp doc: ', scrollTop);
+      this.ampViewerHost_.sendRequest('scroll', {scrollTop: scrollTop}, true);
+    };
+
+
+    Viewer.prototype.processRequest_ = function(name, data, awaitResponse) {
+      log(this.id + ': Viewer.prototype.processRequest_', name);
+      this.receivedMessages.push({name, data});
+      switch(name) {
+        case 'bindReady':
+          return Promise.resolve();
+        case 'documentLoaded':
+          return this.documentReady_();
+        case 'focusin':
+          log('Focusin event', data);
+          return Promise.resolve();
+        case 'requestFullOverlay':
+          return this.requestFullOverlay_();
+        case 'cancelFullOverlay':
+          return this.cancelFullOverlay_();
+        case 'pushHistory':
+          return this.pushHistory_(data.stackIndex);
+        case 'popHistory':
+          return this.popHistory_(data.stackIndex);
+        case 'broadcast':
+          return this.broadcast_(data);
+        case 'unloaded':
+          log('unloaded');
+          return this.handleUnload_();
+        case 'tick':
+          log('[CSI] tick. label:', data.label);
+          return Promise.resolve();
+        case 'a2aNavigate':
+          log('a2a navigation', data);
+          return Promise.resolve();
+        case 'sendCsi':
+          log('[CSI] sendCsi.');
+          return Promise.resolve();
+        case 'touchstart':
+        case 'touchmove':
+        case 'touchend':
+          log('touch event!', name);
+          return Promise.resolve();
+        case 'viewerRenderTemplate':
+        const ampComponentType = data.ampComponent.type
+        if (ampComponentType === 'amp-list') {
+          return this.ssrRenderAmpListTemplate_(data);
+        } else if (ampComponentType == 'amp-form') {
+          return this.ssrRenderAmpFormTemplate_(data);
+        } else if (ampComponentType == 'amp-autocomplete') {
+          return this.ssrRenderAmpAutocompleteTemplate_(data);
+        } else {
+          return Promise.reject({error: 'source amp component is not valid'})
+        }
+        case 'documentHeight':
+        case 'setFlushParams':
+        case 'prerenderComplete':
+        case 'scroll':
+        case 'replaceHistory':
+        case 'visibilitychange':
+          return Promise.resolve();
+        case 'xhr':
+          return this.handleXhrIntercept_();
+        default:
+          return Promise.reject('request not supported: ', name);
+      }
+    };
+
+    Viewer.prototype.handleXhrIntercept_ = function(data) {
+    // Mocked response.
+    return Promise.resolve({
+        "body" : '{"items": [{"title": "Intercepted response", "url": "http://ampdev.org"}]}',
+        "init" : {
+          "headers": {
+            "Content-Type": "application/json",
+          },
+          "type": 'application/json',
+        },
+      });
+    };
+
+    // TODO: We mock the template but don't verify the data
+    // that should be used to construct it. The data should be used
+    // and verified to an extent.
+    Viewer.prototype.ssrRenderAmpAutocompleteTemplate_ = function(data) {
+      // Mocked response.
+      return Promise.resolve({
+        "html":
+          "<div class='product' role='option' data-value='Apple'>Apple</div>"
+            + "<div class='product' role='option' data-value='Orange'>Orange</div>"
+            + "<div class='product' role='option' data-value='Pear'>Pear</div>"
+            + "<div class='product' role='option' data-value='Banana'>Banana</div>"
+            + "<div class='product' role='option' data-value='Watermelon'>Watermelon</div>",
+        "body" : "",
+        "init" : {
+          "headers": {
+            "Content-Type": "application/json",
+          }
+        }
+      });
+    };
+
+    // TODO(alabiaga): We mock the template but don't verify the data
+    // that should be used to construct it. The data should be used
+    // and verified to an extent.
+    Viewer.prototype.ssrRenderAmpListTemplate_ = function(data) {
+      // Mocked response.
+      return Promise.resolve({
+        "html":
+          "<div role='list' class='i-amphtml-fill-content i-amphtml-replaced-content'>"
+            + "<div [text]='data.fruit' role='listitem''></div>"
+            + "<div class='product' role='listitem'>Apple</div>"
+            + "<div class='product' role='listitem'>Orange</div>"
+            + "<div class='product' role='listitem'>Pear</div>"
+            + "<div class='product' role='listitem'>Banana</div>"
+            + "<div class='product' role='listitem'>Watermelon</div>"
+          + "</div>",
+        "body" : "",
+        "init" : {
+          "headers": {
+            "Content-Type": "application/json",
+          }
+        }
+      });
+    };
+
+    // TODO(alabiaga): We mock the template but don't verify the data
+    // that should be used to construct it. The data should be used
+    // and verified to an extent.
+    Viewer.prototype.ssrRenderAmpFormTemplate_ = function(data) {
+      // Mocked response.
+      return Promise.resolve({
+        "html": "<h1>SSR response<h1>",
+        "body": "",
+        "init" : {
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      });
+    };
+
+    Viewer.prototype.handleUnload_ = function(type, data, awaitResponse) {
+      log('Viewer.prototype.handleUnload_');
+      if (this.messaging_) {
+        this.messaging_ = null;
+      }
+      return Promise.resolve();
+    };
+
+
+    function log() {
+      var var_args = Array.prototype.slice.call(arguments, 0);
+      var_args.unshift('[VIEWER]');
+      console/*OK*/.log.apply(console, var_args);
+    }
+
+    function parseUrlDeprecated(urlString) {
+      var a = document.createElement('a');
+      a.href = urlString;
+      return {
+        href: a.href,
+        protocol: a.protocol,
+        host: a.host,
+        hostname: a.hostname,
+        port: a.port == '0' ? '' : a.port,
+        pathname: a.pathname,
+        search: a.search,
+        hash: a.hash,
+        origin: a.protocol + '//' + a.host
+      };
+    }
+
+
+    function paramsStr(params) {
+      var s = '';
+      for (var k in params) {
+        var v = params[k];
+        if (v === null || v === undefined) {
+          continue;
+        }
+        if (s.length > 0) {
+          s += '&';
+        }
+        s += encodeURIComponent(k) + '=' + encodeURIComponent(v);
+      }
+      return s;
+    }
+
+    /**
+     * Parses the query string of an URL. This method returns a simple key/value
+     * map. If there are duplicate keys the latest value is returned.
+     * @param {string} queryString
+     * @return {!Object<string>}
+     */
+    function parseQueryString(queryString) {
+      const params = Object.create(null);
+      if (!queryString) {
+        return params;
+      }
+      if (queryString.startsWith('?') || queryString.startsWith('#')) {
+        queryString = queryString.substr(1);
+      }
+      const pairs = queryString.split('&');
+      for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i];
+        const eqIndex = pair.indexOf('=');
+        let name;
+        let value;
+        if (eqIndex != -1) {
+          name = decodeURIComponent(pair.substring(0, eqIndex)).trim();
+          value = decodeURIComponent(pair.substring(eqIndex + 1)).trim();
+        } else {
+          name = decodeURIComponent(pair).trim();
+          value = '';
+        }
+        if (name) {
+          params[name] = value;
+        }
+      }
+      return params;
+    }
+
+    function startsWith(string, prefix) {
+      return string.lastIndexOf(prefix, 0) == 0;
+    }
+
+    /**
+     * @param {string} url
+     * @param {string} param
+     * @param {*} value
+     * @return {string}
+     */
+    function addQueryParam(url, param, value) {
+      const paramValue =
+          encodeURIComponent(param) + '=' + encodeURIComponent(value);
+      if (!url.includes('?')) {
+        url += '?' + paramValue;
+      } else {
+        url += '&' + paramValue;
+      }
+      return url;
+    }
+
+    function loadAmpDoc() {
+      const hash = window.location.hash;
+      const hashParams = parseQueryString(hash);
+      const href = hashParams['href'];
+      const caps = hashParams['caps'];
+
+      new Viewer(
+          'container1',
+          '1',
+          './everything.amp.html?amp_js_v=0.1',
+          !href).start();
+      addShowContainer('1');
+
+      new Viewer(
+          'container2',
+          '2',
+          './article.amp.html?amp_js_v=0.1',
+          false).start();
+      addShowContainer('2');
+
+      new Viewer(
+          'container3',
+          '3',
+          './article-access.amp.html?amp_js_v=0.1',
+          false).start();
+      addShowContainer('3');
+
+      new Viewer(
+          'container4',
+          '4',
+          './alp.amp.html',
+          false).start();
+      addShowContainer('4');
+
+      new Viewer(
+          'container5',
+          '5',
+          './article-fixed-header.amp.html?amp_js_v=0.1',
+          false).start();
+      addShowContainer('5');
+
+      new Viewer(
+          'container6',
+          '6',
+          './amp-list.ssr.html?amp_js_v=0.1',
+          false).start();
+      addShowContainer('6');
+
+      new Viewer(
+          'container7',
+          '7',
+          './amp-form.ssr.html?amp_js_v=0.1',
+          false).start();
+      addShowContainer('7');
+
+      new Viewer(
+          'container8',
+          '8',
+          './xhr-intercept.html?amp_js_v=0.1',
+          false,
+          'xhrInterceptor').start();
+      addShowContainer('8');
+
+      new Viewer(
+          'container9',
+          '9',
+          './amp-autocomplete.ssr.html?amp_js_v=0.1',
+          false).start();
+      addShowContainer('9');
+
+      showContainer('1');
+    }
+
+    function addShowContainer(id) {
+      var anchor = document.getElementById('show-container' + id + '-anchor');
+      anchor.onclick = function() {
+        showContainer(id);
+      };
+    }
+
+    function showContainer(id) {
+      log('Show container: ', id);
+      var viewerEl = document.querySelector('viewer');
+      viewerEl.setAttribute('data-show-container', id);
+      allViewers.forEach(function(viewer) {
+        viewer.toggleVisibility(viewer.id == id, viewer.id == id);
+      });
+      currentContainerId = id;
+    }
+
+    function getContainer(id) {
+      return allViewers[id - 1];
+    }
+
+    function viewerScrollCurrentAmpDoc(scrollTop) {
+      if (currentContainerId) {
+        getContainer(currentContainerId).scrollAmpDoc(scrollTop);
+      }
+    }
+
+    window.onload = loadAmpDoc;
+  </script>
 </head>
 <body>
-
-<div align="center" class="heading">
-
-<h1 id="top">Mobile News</h1>
-
-   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque augue quis elementum tempus. Pellentesque sit amet
-    neque bibendum, sagittis purus vitae, pellentesque magna. Vestibulum non viverra metus, eget feugiat lacus. Nulla in
-    maximus orci. Maecenas id turpis vel ipsum vestibulum bibendum ut sit amet magna. Nullam hendrerit ex at est eleifend,
-    nec dignissim nibh rutrum. Aliquam quis tellus et nibh faucibus laoreet in eget turpis. Nam quam nisl, porttitor vel
-    ex eget, dapibus placerat dui. Mauris commodo pellentesque leo, eu tempus quam. In hac habitasse platea dictumst. Suspendisse
-    non ante finibus, luctus augue non, luctus orci. Vestibulum ornare lacinia aliquam. In sollicitudin vehicula vulputate.
-    Sed mi elit, commodo nec sapien nec, pretium bibendum leo. Donec id justo tortor. Ut in mauris dapibus, laoreet metus
-    vitae, dictum nisi.
-  </p>    
-  </div>
-
-   <amp-consent id="myConsent" layout="nodisplay">
-        <script type="application/json">{
-          "consentInstanceId": "advanced-consent",
-          "consentRequired": "remote",
-          "checkConsentHref": "/api/get-consent",
-          "promptUI": "consentDialog",
-          "postPromptUI": "post-consent-ui"
-        }
-        </script>
-
-        <div class="lightbox" id="consentDialog">
-          <div class="lightbox-content">
-            <div class="dismiss-button" role="button" tabindex="0" on="tap:myConsent.dismiss">X</div>
-            <div class="message">
-              <h2>Mobile Consent</h2>
-              <p>This is an important message requiring you to make a choice.</p>
-            </div>
-            <div id="choice">
-              <button on="tap:choice2.show,choice1.hide">Accept</button>
-            </div>
-            <div id="choice1" hidden class="message">
-              <p>This is some more information about this choice. Here's a list of items related to this choice.</p>
-              <amp-list height="132" layout="fixed-height" src="https://preview.amp.dev/json/consent-items.json" binding="no">
-                <template type="amp-mustache">
-
-                  <li>{{.}}</li>
-                </template>
-              </amp-list>
-              <button on="tap:myConsent.accept">Confirm</button>
-            </div>
-            <div id="choice2" hidden class="message">
-              <p>This is some more information about this choice.</p>
-              <button on="tap:myConsent.reject">Confirm</button>
-            </div>
-          </div>
-        </div>
-        <div id="post-consent-ui">
-          <button on="tap:myConsent.prompt()">Update Consent</button>
-        </div>
-  </amp-consent>
- 
-
-  
-   <amp-analytics>
-    <script type="application/json">
-    {
-      "vars": {
-        "linkerVar": "LINKER_PARAM(ga, foo)"
-      },
-      "requests": {
-        "endpoint": "/analytics/foo?b=${encoded}",
-        "click": "${endpoint}&gclid=LINKER_PARAM(ga, gclid)"
-      },
-      "triggers": {
-        "pageview": {
-          "on": "visible",
-          "request": "endpoint"
-        },
-        "click": {
-          "on": "click",
-          "request": "click",
-          "selector": "#btn",
-          "extraUrlParams": {
-            "extraGclid": "LINKER_PARAM(ga, gclid)",
-            "foo": "1",
-            "linkerFoo": "${linkerVar}"
-          }
-        }
-      },
-      "linkers" : {
-        "enabled": true,
-        "proxyOnly": false,
-        "ga": {
-          "ids": {
-            "_ga": "CLIENT_ID(_ga)",
-            "gclid": "$IF(QUERY_PARAM(gclid), QUERY_PARAM(gclid), LINKER_PARAM(ga, gclid))",
-            "foo": "123"
-          },
-          "destinationDomains": ["www.adball.online"]
-        },
-        "linker2": {
-          "ids": {
-            "_cid": "CLIENT_ID(foo)",
-            "t": "${title}"
-          },
-          "destinationDomains": ["www.adball.online"]
-        }
-      }
-    }
-    </script>
-  </amp-analytics>
-  <amp-analytics type="googleanalytics">
-    <script type="application/json">
-    {
-      "requests": {
-        "endpoint": "/analytics/foo?b=goog"
-      },
-      "triggers": {
-        "pageview": {
-          "on": "visible",
-          "request": "endpoint"
-        }
-      },
-      "linkers" : {
-        "proxyOnly": false,
-        "enabled": true
-      }
-    }
-    </script>
-  </amp-analytics>
-  
-  
-
-  
-  
-
-
-
+  <viewer>
+    <header>
+      <h1>Viewer</h1>
+      <a class="show-container-anchor" id="show-container1-anchor">One</a>
+      <a class="show-container-anchor" id="show-container2-anchor">Two</a>
+      <a class="show-container-anchor" id="show-container3-anchor">Three</a>
+      <a class="show-container-anchor" id="show-container4-anchor">ALP</a>
+      <a class="show-container-anchor" id="show-container5-anchor">Five</a>
+      <a class="show-container-anchor" id="show-container6-anchor">Six</a>
+      <a class="show-container-anchor" id="show-container7-anchor">Seven</a>
+      <a class="show-container-anchor" id="show-container8-anchor">Eight</a>
+      <a class="show-container-anchor" id="show-container9-anchor">Nine</a>
+      <a>|</a>
+      <a id="visibilityToggle">Visible</a>
+    </header>
+    <container id="container1">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container2">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container3">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container4">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container5">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container6">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container7">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container8">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+    <container id="container9">
+      <div class="wait">
+        Please wait, the AMP doc will appear here...
+      </div>
+    </container>
+  </viewer>
 </body>
 </html>
