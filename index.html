@@ -64,6 +64,23 @@
     </script>
 
     <style amp-custom>
+    h1 {
+      margin: 1rem;
+    }
+     body {
+      background-color: blue;
+    }
+ 
+    :root {
+      --space-3: 1.5rem; /* 24px */
+    }
+    #post-consent-ui {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-3);
+    }
+ 
     .amp-sticky-ad-close-button {
       min-width: 0;
     }
@@ -134,42 +151,62 @@
 </style>
 </head>
 <body>
+
 <main>
 <div align="center" class="heading">
 
 <h1>Mobile News</h1>
 
-
+<amp-img data-block-on-consent src="https://preview.amp.dev/static/samples/img/landscape_lake_300x201.jpg" width="300" height="201">
+</amp-img>
 
 
 </div>
-<amp-sticky-ad layout="nodisplay">
- <amp-ad width="320" height="50" type="doubleclick" data-slot="/35096353/amptesting/formats/sticky">
-   </amp-ad>
-  </amp-sticky-ad>
 
-  <!--
-    `amp-sticky-ad` will display after scroll one viewport height from top provided there is at least one more viewport of content available.
 
-    [tip type="note"]
-    The text that follows is intentionally *Lorem Ipsum* to ensure that there is another viewport from the first one on top to demonstrate `amp-sticky-ad`.
-    [/tip]
-  -->
+   <!-- ## Defining the Consent Flow -->
   <!--
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis, metus a tristique aliquet, enim nibh efficitur sem, ut iaculis urna justo eu diam. Nullam cursus sapien et sodales posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Donec vitae ornare risus. Maecenas eleifend ante vel dui laoreet, et porttitor libero rutrum. Nam arcu mi, ullamcorper at risus et, pulvinar ultrices erat. In pellentesque sem vel purus auctor, ut venenatis tellus tristique. Phasellus molestie diam orci, nec gravida turpis bibendum ut. Sed sagittis aliquet lorem sed dictum.
+    We define a basic consent flow using the `promptUISrc` to load our custom consent iframe.
   -->
+  <amp-consent id="myUserConsent" layout="nodisplay">
+    <script type="application/json">{
+      "consentInstanceId": "myConsent",
+      "consentRequired": true,
+      "promptUISrc": "/static/files/diy-consent.html",
+      "postPromptUI": "post-consent-ui"
+    }</script>
+
+    <div id="post-consent-ui">
+    <button on="tap:myUserConsent.prompt()">Update Consent</button>
+    </div>
+  </amp-consent>
+
+  <!-- ## Consent Dialog Iframe -->
   <!--
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis, metus a tristique aliquet, enim nibh efficitur sem, ut iaculis urna justo eu diam. Nullam cursus sapien et sodales posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Donec vitae ornare risus. Maecenas eleifend ante vel dui laoreet, et porttitor libero rutrum. Nam arcu mi, ullamcorper at risus et, pulvinar ultrices erat. In pellentesque sem vel purus auctor, ut venenatis tellus tristique. Phasellus molestie diam orci, nec gravida turpis bibendum ut. Sed sagittis aliquet lorem sed dictum.
+    When the consent dialog iframe is ready, it can send the `amp-consent` component a postMessage with the style information.
+
+    ```js
+    window.parent.postMessage({
+      type: 'consent-ui',
+      action: 'ready',
+      initialHeight: '80vh',
+      enableBorder: true
+    }, '*');
+    ```
+
+    Here, the initialHeight is a string that represents the viewport height that the iframe should take.
+    A viewport height between 30 and 60, inclusive, will tell `amp-consent` to style the iframe in a bottom sheet.
+    A viewport height greater than 60 and less than or equal to 80 will tell `amp-consent` to style the iframe as a centered modal.
   -->
-  <!--
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis, metus a tristique aliquet, enim nibh efficitur sem, ut iaculis urna justo eu diam. Nullam cursus sapien et sodales posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Donec vitae ornare risus. Maecenas eleifend ante vel dui laoreet, et porttitor libero rutrum. Nam arcu mi, ullamcorper at risus et, pulvinar ultrices erat. In pellentesque sem vel purus auctor, ut venenatis tellus tristique. Phasellus molestie diam orci, nec gravida turpis bibendum ut. Sed sagittis aliquet lorem sed dictum.
+
+    <!--
+    Use `data-block-on-consent` attribute to block AMP components until consent is given.
+    Individual AMP components can override  blocking behavior and implement blocking logic themselves.
+
+    Here is an image which is blocked until consent is given:
   -->
-  <!--
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis, metus a tristique aliquet, enim nibh efficitur sem, ut iaculis urna justo eu diam. Nullam cursus sapien et sodales posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Donec vitae ornare risus. Maecenas eleifend ante vel dui laoreet, et porttitor libero rutrum. Nam arcu mi, ullamcorper at risus et, pulvinar ultrices erat. In pellentesque sem vel purus auctor, ut venenatis tellus tristique. Phasellus molestie diam orci, nec gravida turpis bibendum ut. Sed sagittis aliquet lorem sed dictum.
-  -->
-  <!--
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis, metus a tristique aliquet, enim nibh efficitur sem, ut iaculis urna justo eu diam. Nullam cursus sapien et sodales posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Donec vitae ornare risus. Maecenas eleifend ante vel dui laoreet, et porttitor libero rutrum. Nam arcu mi, ullamcorper at risus et, pulvinar ultrices erat. In pellentesque sem vel purus auctor, ut venenatis tellus tristique. Phasellus molestie diam orci, nec gravida turpis bibendum ut. Sed sagittis aliquet lorem sed dictum.
-  -->
-      
+  
+
+
 </body>
 </html>
