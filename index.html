@@ -38,10 +38,57 @@
       <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
       <script async custom-element="amp-fx-flying-carpet" src="https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js"></script>
+      <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script>
 
       <link rel="canonical" href="https://myhellonews.vercel.app">
      
-      <style amp-custom>
+        <style amp-custom>
+    :root {
+      --space-2: 1rem;   /* 16px */
+      --space-3: 1.5rem; /* 24px */
+    }
+    .lightbox {
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5% 0;
+    }
+    .lightbox-content {
+      margin: 0 auto;
+      padding: var(--space-2);
+      background: #fff;
+      border-radius: 5px;
+      max-width: 700px;
+      width: 95%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .message {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .message > h2,
+    .message > * {
+      margin: var(--space-2) 0;
+      min-width: 200px;
+      text-align: center;
+    }
+    .dismiss-button {
+      position: absolute;
+      right: var(--space-3);
+      top: var(--space-2);
+      cursor: pointer;
+    }
+    #post-consent-ui {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-3);
+    }
+ 
      :root {
       --color-secondary: #00DCC0;
     }
@@ -146,33 +193,62 @@
 <h1 id="top">Mobile News</h1>
 
 </div>
+   <amp-consent id="myConsent" layout="nodisplay">
+        <script type="application/json">{
+          "consentInstanceId": "advanced-consent",
+          "consentRequired": "remote",
+          "checkConsentHref": "/documentation/examples/api/get-consent",
+          "promptUI": "consentDialog",
+          "postPromptUI": "post-consent-ui"
+        }</script>
+        <div class="lightbox" id="consentDialog">
+          <div class="lightbox-content">
+            <div class="dismiss-button" role="button" tabindex="0" on="tap:myConsent.dismiss">X</div>
+            <div class="message">
+              <h2>Headline</h2>
+              <p>This is an important message requiring you to make a choice.</p>
+            </div>
+            <div id="choice">
+              <button on="tap:choice2.show,choice1.hide">Choice 2</button>
+            </div>
+            <div id="choice1" hidden class="message">
+              <p>This is some more information about this choice. Here's a list of items related to this choice.</p>
+              <amp-list height="132" layout="fixed-height" src="https://preview.amp.dev/json/consent-items.json" binding="no">
+                <template type="amp-mustache">
+                  <li>{{.}}</li>
+                </template>
+              </amp-list>
+              <button on="tap:myConsent.accept">Confirm</button>
+            </div>
+            <div id="choice2" hidden class="message">
+              <p>This is some more information about this choice.</p>
+              <button on="tap:myConsent.reject">Confirm</button>
+            </div>
+          </div>
+        </div>
+        <div id="post-consent-ui">
+          <button on="tap:myConsent.prompt()">Update Consent</button>
+        </div>
+  </amp-consent>
+ 
 
-<div>
-<div class="amp-flying-carpet-text-border">Advertising</div>
+  <amp-img data-block-on-consent src="https://preview.amp.dev/static/samples/img/landscape_lake_300x201.jpg" width="300" height="201">
+  </amp-img>
 
-<amp-fx-flying-carpet height="300px">
+  <!--
+  Ads can also be blocked until consent is given, but ad networks can implement own behavior (e.g. default to non-personalized ads without consent, as seen [documented here](https://support.google.com/dfp_premium/answer/7678538#amp-pages) for Doubleclick). Note that you may see the same ad when accepting or rejecting consent for this specific example and that's because the example doesn't use personalized information even when accepting consent.
 
-          <amp-ad width="300" height="600" layout="fixed" type="doubleclick" data-slot="/35096353/amptesting/formats/flying_carpet">
-          </amp-ad>
-
-
-        </amp-fx-flying-carpet>
-     
- <div class="amp-flying-carpet-text-border">Advertising</div>
- </div>
-
- <div class="viewport-100"></div>
+  Here is an example of `amp-ad` depending on `amp-consent`:
+ -->
+  
+   <amp-ad data-block-on-consent data-slot="/30497360/a4a/a4a_native" height="250" type="doubleclick" width="300">
+  </amp-ad>
 
 
-      
-  <amp-fx-flying-carpet height="300px">
 
-        <amp-img src="   " width="1280" height="853" alt="an image">
-        </amp-img>
 
-  </amp-fx-flying-carpet>
 
-  <div class="viewport-100"></div>
+
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque augue quis elementum tempus. Pellentesque sit amet
     neque bibendum, sagittis purus vitae, pellentesque magna. Vestibulum non viverra metus, eget feugiat lacus. Nulla in
