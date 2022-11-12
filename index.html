@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <meta name="amp-google-client-id-api" content="googleanalytics">
-
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+  
       <title>News Article</title>
        
-      <script async src="https://cdn.ampproject.org/v0.js"></script>
       <!-- ## Setup -->
       <!--
         All additionally used AMP components must be imported in the header. Import `amp-social-share` for adding share buttons-->
+
       <script async custom-element="amp-sticky-ad" src="https://cdn.ampproject.org/v0/amp-sticky-ad-1.0.js"></script>
       <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
       <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -30,7 +31,7 @@
       <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
       <!-- Import `amp-ad` to display ads -->
       <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-      
+      <script async custom-element="amp-fx-flying-carpet" src="https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js"></script>
       <link rel="canonical" href="https://myhellonews.vercel.app/">
       
 
@@ -135,30 +136,20 @@
 </head>
 <body>
 
-<main>
 <div align="center" class="heading">
 <h1 id="top">Mobile News</h1>
+
 </div>
-<strong>Scroll Down To See The News</strong>
+
 <div class="viewport-100"></div>
-
-
-      <!--
-        `amp-fx-flying-carpet` elements must be positioned after the first viewport so make sure to place enough content before the element to cover the targeted viewport sizes. The box that follows is to ensure that the `amp-fx-flying-carpet` is placed after the first viewport.
-
-        <div class="viewport-100"></div>
-
-        ## Flying carpet for ads
-
-        `amp-fx-flying-carpet` can be used to display ads. Use the `height` parameter to specify the height of the flying carpets "window".
-      -->
-
-
-      <div>
+<div>
         <div class="amp-flying-carpet-text-border">Advertising</div>
         <amp-fx-flying-carpet height="300px">
+
           <amp-ad width="300" height="600" layout="fixed" type="doubleclick" data-slot="/35096353/amptesting/formats/flying_carpet">
           </amp-ad>
+
+
         </amp-fx-flying-carpet>
         <div class="amp-flying-carpet-text-border">Advertising</div>
       </div>
