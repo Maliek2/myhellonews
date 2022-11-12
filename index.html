@@ -32,39 +32,9 @@
       <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
       
       <link rel="canonical" href="https://myhellonews.vercel.app/">
-      <script type="application/ld+json">
-{
-      "@context": "http://schema.org",
-      "@type": "NewsArticle",
-      "mainEntityOfPage": "https://amp.dev/samples_templates/news_article/",
-      "headline": "Lorem Ipsum",
-      "datePublished": "2016-04-21T11:55:02Z",
-      "dateModified": "2016-04-21T11:55:02Z",
-      "description": "A sample news article build with AMP.",
-      "author": {
-        "@type": "Person",
-        "name": "Sebastian Benz"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Google",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "http://cdn.ampproject.org/logo.jpg",
-          "width": 600,
-          "height": 60
-        }
-      },
-      "image": {
-        "@type": "ImageObject",
-        "url": "/static/samples/img/landscape_lake_1280x857.jpg",
-        "height": 1280,
-        "width": 857
-      }
-    }
-    </script>
+      
 
-    <style amp-custom>
+      <style amp-custom>
      :root {
       --color-secondary: #00DCC0;
     }
@@ -167,10 +137,12 @@
 
 <main>
 <div align="center" class="heading">
-
 <h1 id="top">Mobile News</h1>
-<strong>Scroll Down to see the amp-fx-flying-carpet in action</strong>
-      <div class="viewport-100"></div>
+</div>
+<strong>Scroll Down To See The News</strong>
+<div class="viewport-100"></div>
+
+
       <!--
         `amp-fx-flying-carpet` elements must be positioned after the first viewport so make sure to place enough content before the element to cover the targeted viewport sizes. The box that follows is to ensure that the `amp-fx-flying-carpet` is placed after the first viewport.
 
@@ -180,6 +152,8 @@
 
         `amp-fx-flying-carpet` can be used to display ads. Use the `height` parameter to specify the height of the flying carpets "window".
       -->
+
+
       <div>
         <div class="amp-flying-carpet-text-border">Advertising</div>
         <amp-fx-flying-carpet height="300px">
@@ -189,30 +163,18 @@
         <div class="amp-flying-carpet-text-border">Advertising</div>
       </div>
       <div class="viewport-100"></div>
-      <!--
-        <div class="viewport-100"></div>
 
-        ## Flying carpet for images
 
-        `amp-fx-flying-carpet` can be also used to display images.
-      -->
+      
       <amp-fx-flying-carpet height="300px">
-        <amp-img src="https://preview.amp.dev/static/samples//img/landscape_lake_1280x857.jpg" width="1280" height="853" alt="an image">
+        <amp-img src="   " width="1280" height="853" alt="an image">
         </amp-img>
       </amp-fx-flying-carpet>
 
       <div class="viewport-100"></div>
-      <!--
-        ## Positioning
+      
 
-        `amp-fx-flying-carpet` elements must be positioned before the last viewport so make sure to place enough content after the element to cover the targeted viewport sizes.
-
-        The box that follows is to ensure that the `amp-fx-flying-carpet` is placed before the last viewport.
-
-        <div class="viewport-100"></div>
-      -->
-
-  </div>
+  
 
    <amp-analytics>
     <script type="application/json">
@@ -286,7 +248,8 @@
   <div><a href="https://www.adball.online/blog">My Blog</a></div>
   <div><a href="https://www.adball.online/app">My App</a></div>
   <div><a href="https://www.adball.online/terms">My Disclosure</a></div>
-  <button id="btn">Button</button>
+  <button id="btn">Privacy Policy</button>
+
   <form method="post"
     action-xhr="https://www.adball.online"
     target="_top">
@@ -350,13 +313,13 @@
   </p>
   
 
-
-   <!-- ## Defining the Consent Flow -->
+  <!-- ## Defining the Consent Flow -->
   <!--
     We define a basic consent flow using the `promptUISrc` to load our custom consent iframe.
   -->
   <amp-consent id="myUserConsent" layout="nodisplay">
-    <script type="application/json">{
+    <script type="application/json">
+    {
       "consentInstanceId": "myConsent",
       "consentRequired": true,
       "promptUISrc": "/static/files/diy-consent.html",
@@ -364,7 +327,7 @@
     }</script>
 
     <div id="post-consent-ui">
-    <button on="tap:myUserConsent.prompt()">Update Consent</button>
+    <button on="tap:myUserConsent.prompt()">Tools Consent</button>
     </div>
   </amp-consent>
   
