@@ -188,11 +188,23 @@
 </style>
 </head>
 <body>
+
 <div align="center" class="heading">
 
 <h1 id="top">Mobile News</h1>
 
 </div>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque augue quis elementum tempus. Pellentesque sit amet
+    neque bibendum, sagittis purus vitae, pellentesque magna. Vestibulum non viverra metus, eget feugiat lacus. Nulla in
+    maximus orci. Maecenas id turpis vel ipsum vestibulum bibendum ut sit amet magna. Nullam hendrerit ex at est eleifend,
+    nec dignissim nibh rutrum. Aliquam quis tellus et nibh faucibus laoreet in eget turpis. Nam quam nisl, porttitor vel
+    ex eget, dapibus placerat dui. Mauris commodo pellentesque leo, eu tempus quam. In hac habitasse platea dictumst. Suspendisse
+    non ante finibus, luctus augue non, luctus orci. Vestibulum ornare lacinia aliquam. In sollicitudin vehicula vulputate.
+    Sed mi elit, commodo nec sapien nec, pretium bibendum leo. Donec id justo tortor. Ut in mauris dapibus, laoreet metus
+    vitae, dictum nisi.
+  </p>    
 
    <amp-consent id="myConsent" layout="nodisplay">
         <script type="application/json">{
@@ -201,7 +213,8 @@
           "checkConsentHref": "/api/get-consent",
           "promptUI": "consentDialog",
           "postPromptUI": "post-consent-ui"
-        }</script>
+        }
+        </script>
         <div class="lightbox" id="consentDialog">
           <div class="lightbox-content">
             <div class="dismiss-button" role="button" tabindex="0" on="tap:myConsent.dismiss">X</div>
@@ -216,6 +229,7 @@
               <p>This is some more information about this choice. Here's a list of items related to this choice.</p>
               <amp-list height="132" layout="fixed-height" src="https://preview.amp.dev/json/consent-items.json" binding="no">
                 <template type="amp-mustache">
+
                   <li>{{.}}</li>
                 </template>
               </amp-list>
@@ -233,8 +247,7 @@
   </amp-consent>
  
 
-  <amp-img data-block-on-consent src="https://preview.amp.dev/static/samples/img/landscape_lake_300x201.jpg" width="300" height="201">
-  </amp-img>
+  
 
   <!--
   Ads can also be blocked until consent is given, but ad networks can implement own behavior (e.g. default to non-personalized ads without consent, as seen [documented here](https://support.google.com/dfp_premium/answer/7678538#amp-pages) for Doubleclick). Note that you may see the same ad when accepting or rejecting consent for this specific example and that's because the example doesn't use personalized information even when accepting consent.
@@ -250,17 +263,7 @@
 
 
 
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque augue quis elementum tempus. Pellentesque sit amet
-    neque bibendum, sagittis purus vitae, pellentesque magna. Vestibulum non viverra metus, eget feugiat lacus. Nulla in
-    maximus orci. Maecenas id turpis vel ipsum vestibulum bibendum ut sit amet magna. Nullam hendrerit ex at est eleifend,
-    nec dignissim nibh rutrum. Aliquam quis tellus et nibh faucibus laoreet in eget turpis. Nam quam nisl, porttitor vel
-    ex eget, dapibus placerat dui. Mauris commodo pellentesque leo, eu tempus quam. In hac habitasse platea dictumst. Suspendisse
-    non ante finibus, luctus augue non, luctus orci. Vestibulum ornare lacinia aliquam. In sollicitudin vehicula vulputate.
-    Sed mi elit, commodo nec sapien nec, pretium bibendum leo. Donec id justo tortor. Ut in mauris dapibus, laoreet metus
-    vitae, dictum nisi.
-  </p>    
-
+  
   
 
    <amp-analytics>
