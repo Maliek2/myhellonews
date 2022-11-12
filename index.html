@@ -25,6 +25,7 @@
       <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
       <!-- Import `amp-ad` to display ads -->
       <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
       <link rel="canonical" href="https://amp.dev/documentation/examples/news-publishing/news_article/index.html">
       <script type="application/ld+json">
@@ -131,8 +132,31 @@
 <div align="center" class="heading">
 <h1>Mobile News</h1>
 <p id="summary">This is a sample article demonstrating how to write a news article in AMP. It demonstrates the usage of AMP components which works well in news articles. Examples include social sharing, image galleries, personalized content, ads, and more.</p>
-</div>
 
+<amp-ad width="300" height="250" type="a9" data-amzn_assoc_ad_mode="auto" data-divid="amzn-assoc-ad-fe746097-f142-4f8d-8dfb-45ec747632e5" data-recomtype="async" data-adinstanceid="fe746097-f142-4f8d-8dfb-45ec747632e5">
+  </amp-ad>
+
+  <!-- ## Placeholder -->
+  <!--
+    Optionally `amp-ad` supports a child element with the `placeholder` attribute. If supported by the ad network, this element is shown until the ad is available for viewing.
+  -->
+  <amp-ad width="300" height="200" type="doubleclick" data-slot="/4119129/doesnt-exist">
+    <div placeholder>
+      <b>Placeholder here!!!</b>
+    </div>
+  </amp-ad>
+
+  <!-- ## Fallback -->
+  <!--
+    `amp-ad` supports a child element with the `fallback` attribute. If supported by the ad network, this element is shown if no ad is available for this slot.
+  -->
+  <amp-ad width="300" height="200" type="doubleclick" data-slot="/4119129/doesnt-exist">
+    <div fallback>
+      <p>Thank you for trying AMP!</p>
+      <p>You got lucky! We have no ad to show to you!</p>
+    </div>
+  </amp-ad>
+</div>
       
 </body>
 </html>
