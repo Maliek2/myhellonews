@@ -8,8 +8,19 @@
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
   <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-  
-  
+  <style amp-custom>
+    h1 {
+      font-size: 1.2em;
+    }
+    button, input {
+      border: solid 1px black;
+    }
+    amp-script {
+      border: dotted 1px orangered;
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>  
 </head>
 <body>
 
@@ -23,14 +34,14 @@
         <div>
          <header class="header">
          <h1>Hello News</h1>
-         <input class="new-todo" placeholder="What needs to be done?" autofocus="true">
+         
          </header>
          </div>
       </amp-script>
     </section>
 
   </div>
-
+  
   <footer class="info">
     <p>Double-click to edit a todo</p>
     <p>Created by <a href="http://github.com/Maliek2/myhellonews/">Chrome Policy</a> and <a href="http://github.com/Maliek2/myhellonews">My Mobile App</a></p>
